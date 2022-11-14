@@ -16,10 +16,8 @@ public class LaserHitTrigger : HitTrigger
     {
         if (collision.TryGetComponent<PhisicalEntity>(out var entity))
         {
-            print("istays");
             if (canDealDmg)
             {
-                print("can deal dmg;");
                 entity.TakeDamage(dmg);
                 StartCoroutine(CdForDmg());
             }

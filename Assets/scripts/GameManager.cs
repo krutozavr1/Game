@@ -7,10 +7,11 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     [SerializeField]
-    public GameObject player, knifePrefab, grenadePrefab, deathScreen, pauseScreen;
+    public GameObject player, deathScreen, pauseScreen;
     [SerializeField]
     public Camera cam;
     public bool enemiesAreSlown = false, gameIsPaused = false;
+
     private void Awake()
     {
         if(instance == null)
@@ -29,14 +30,6 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        /*if(Input.GetKeyDown(KeyCode.Escape) && (!gameIsPaused))
-        {
-            PauseTheGame();
-        }
-        else if (Input.GetKeyDown(KeyCode.Escape) && (gameIsPaused))
-        {
-            ResumeTheGame();
-        }*/
         if (Keyboard.current.qKey.isPressed)
         {
             SceneManager.LoadScene(1);
@@ -44,22 +37,4 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void ShowDeathScreen()
-    {
-        deathScreen.SetActive(true);
-    }
-
-    void PauseTheGame()
-    {
-        gameIsPaused = true;
-        pauseScreen.SetActive(true);
-        Time.timeScale = 0;
-    }
-
-    void ResumeTheGame()
-    {
-        pauseScreen.SetActive(false);
-        gameIsPaused = false;
-        Time.timeScale = 1;
-    }
 }
